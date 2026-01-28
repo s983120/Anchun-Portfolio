@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Chun Ko | Data Analyst & Consultant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a252f;
+            --accent: #3498db;
+            --bg: #f8f9fa;
+            --text: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* 導航 */
+        nav {
+            background: #fff;
+            padding: 1.2rem 5%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: white;
+            color: var(--text);
+            padding: 20px 3rem;
+            /* padding: 1rem 5% 3rem; */
+            /* Further reduced top padding */
+            display: flex;
+            /* align-items: center; */
+            /* Center vertically */
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .hero-label {
+            font-size: 1.5rem;
+            /* Increased from 1.2rem */
+            color: #777;
+            /* text-transform: uppercase; Removed */
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .hero-name {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+            /* Reduced from 3rem */
+            letter-spacing: -1px;
+            color: var(--primary);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        /* Subtitle style */
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 2rem;
+            line-height: 1.5;
+        }
+
+        header p.hero-description {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-top: 10px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        header .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        header .social-links a {
+            color: var(--primary);
+            /* Dark icons */
+            margin: 0;
+            font-size: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            max-width: 400px;
+            /* Reduced from 500px */
+        }
+
+        .hero-image img {
+            width: auto;
+            max-height: 380px;
+            border-radius: 4px;
+            /* Optional, reference looks square/slightly rounded */
+            /* object-fit: cover; */
+            aspect-ratio: 4/5;
+            /* Portrait aspect ratio */
+            box-shadow: 20px 20px 0px rgba(0, 0, 0, 0.05);
+            /* Stylish shadow/offset */
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column-reverse;
+                /* Image on top on mobile? Or text on top? Reference usually text top. */
+                flex-direction: column;
+                text-align: left;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-image {
+                margin-top: 2rem;
+                max-width: 100%;
+            }
+        }
+
+        /* 主要內容區 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 關於我 */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        /* 作品集網格 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            align-items: stretch;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* 圖片佔位符 - 你之後可以替換成真實截圖 */
+        .card-img-top {
+            width: 100%;
+            height: 220px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            font-size: 1.2rem;
+            object-fit: contain;
+            /* Changed from cover to contain to valid clipping */
+            object-position: top;
+            background: #fff;
+            /* White background for letterboxing */
+        }
+
+        .card-body {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .card-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        /* Expertise Section */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .expertise-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .expertise-item:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .tool-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            flex: 1 1 300px;
+            text-align: left;
+            border: 1px solid #eee;
+        }
+
+        .tool-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #f0f4f8;
+            padding-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tool-category h3 i {
+            color: var(--accent);
+        }
+
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tool-tag {
+            background: #f8f9fa;
+            color: #444;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid #e9ecef;
+        }
+
+        @media (max-width: 600px) {
+            .tools-grid {
+                flex-direction: column;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 4rem auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #34495e;
+            color: white;
+        }
+
+        /* 標籤 Tag */
+        .tags {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #eef2f7;
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* 按鈕 */
+        .btn {
+            display: block;
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* Dropdown CSS */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .logo {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-left: 8px;
+            font-size: 0.8em;
+            color: #777;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid #eee;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav style="justify-content: flex-start;">
+        <div class="dropdown">
+            <div class="logo">
+                <img src="logo.png" alt="Menu" style="height: 30px; vertical-align: middle;">
+            </div>
+            <div class="dropdown-content">
+                <a href="#about">About Me</a>
+                <a href="#projects">Selected Projects</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#tools">Tools & Software</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <div class="hero-label">Project Portfolio</div>
+            <h1 class="hero-name">An Chun Ko</h1>
+            <div class="hero-subtitle">
+                Operations & People Analytics｜Process Improvement｜Data-driven Insights
+            </div>
+            <p class="hero-description">
+                From spreadsheets to strategy—I help HR teams understand what their data is actually telling them.
+                Currently bridging 5 years of operations experience with advanced analytics skills
+            </p>
+
+
+        </div>
+        <div class="hero-image">
+            <img src="profile.jpg" alt="An Chun Ko">
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section id="about">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-grid">
+                <p style="text-align: left; line-height: 1.8;">
+                    I am a data-driven professional focused on Operations and People Analytics, with a background in
+                    operations and analytical work. I specialize in using data analysis and process improvement to help
+                    organizations make better decisions across both people and operational workflows.
+                    <br><br>
+                    I enjoy working with cross-functional teams to understand real business and workforce challenges,
+                    and to translate complex data into clear, actionable insights. Through hands-on projects in
+                    operations analysis, reporting, and data visualization, I have developed a strong ability to connect
+                    data with operational efficiency, resources allocation, and measurable business impact.
+                    <br><br>
+                    Through prior roles closely tied to HR and operations, I have built extensive experience in process
+                    optimization, cross-functional project execution, budget planning, and system implementation. These
+                    roles required balancing multiple stakeholders, operational constraints, and execution timelines,
+                    giving me a practical understanding of how organizations function day to day. This foundation allows
+                    me to operate effectively in Operations Analyst and People Analyst roles, where understanding both
+                    workflows and human factors is critical to driving sustainable improvement.
+                    <br><br>
+                    I am continuously strengthening my analytical and operational skill set, with the goal of supporting
+                    smarter, data-informed decisions in dynamic, fast-paced environments.
+                </p>
+            </div>
+        </section>
+
+        <section id="projects" style="margin-top: 5rem;">
+            <div class="section-title">
+                <h2>Selected Projects</h2>
+                <p>Data Analytics · AI Strategy · Business & People Analytics · Geospatial Visualization</p>
+            </div>
+
+            <div class="portfolio-grid">
+
+                <div class="project-card">
+                    <img src="airbnb_cover.png" alt="Airbnb Project" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">NYC Airbnb Market Segmentation Analysis</h3>
+                        <p class="card-text">
+                            Analyzed NYC Airbnb data using K-Means clustering and SVM to better understand host
+                            segments. The results showed that differences between hosts were driven more by operational
+                            choices—such as minimum stay policies and review frequency—than by price or location,
+                            leading to three clear host groups with different investment implications.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">R Language</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Clustering</span>
+                        </div>
+                        <a href="NYC Airbnb Market Analysis.pdf" target="_blank" class="btn">
+                            <i class="fas fa-file-pdf"></i> View Full Report
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="trillium_cover.png" alt="Trillium Project" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">Trillium AI Workflow Implementation</h3>
+                        <p class="card-text">
+                            Worked with a nonprofit organization to assess and introduce AI tools, including SETWorks AI
+                            and Microsoft Copilot. Through staff interviews and workflow reviews, I helped design a
+                            practical training and rollout plan that is expected to reduce administrative work by about
+                            60%, allowing teams to spend more time supporting employers and job seekers through
+                            training, placement, and ongoing employment services.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Business Consulting</span>
+                            <span class="tag">AI Strategy</span>
+                            <span class="tag">Workflow Optimization</span>
+                        </div>
+                        <a href="Aligning AI Tools with Trillium Workflows.pdf" target="_blank" class="btn">
+                            <i class="fas fa-file-pdf"></i> View Consultant Report
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="boston_crime_cover.png" alt="Boston Crime Project" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">Boston Campus Safety Data Dashboard</h3>
+                        <p class="card-text">
+                            Built an interactive Tableau dashboard to analyze crime patterns within a one-mile radius of
+                            Northeastern University, focusing on the most common crime types, seasonal trends, and
+                            high-risk time periods. The analysis showed that larceny accounted for over 41% of
+                            incidents, with clear peaks during student move-in months (August–September) and higher
+                            crime frequency on Tuesdays between 4–6 PM. These insights helped translate raw crime data
+                            into practical guidance for campus safety planning and resource allocation.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Tableau</span>
+                            <span class="tag">Geospatial Analysis</span>
+                            <span class="tag">Public Safety</span>
+                        </div>
+                        <a href="Boston Crime Pattern Analysis.pdf" target="_blank" class="btn">
+                            <i class="fas fa-chart-bar"></i> View Dashboard
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="hr_analytics_cover.png" alt="HR Project" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">Employee Retention & Performance Analytics</h3>
+                        <p class="card-text">
+                            Analyzed HR data from over 300 employees to understand factors related to retention and
+                            performance. The findings suggested a strong link between project engagement and retention,
+                            while also pointing to higher turnover risk in the production team, leading to
+                            recommendations around clearer internal career paths.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">HR Analytics</span>
+                            <span class="tag">Python/Pandas</span>
+                            <span class="tag">Data Viz</span>
+                        </div>
+                        <a href="HR Data Analysis Project.pdf" target="_blank" class="btn">
+                            <i class="fas fa-file-pdf"></i> View Analysis Report
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+    </div>
+
+    <section id="expertise" style="background: white;">
+        <div class="section-title">
+            <h2>Expertise</h2>
+        </div>
+        <div class="expertise-grid">
+            <div class="expertise-item">Operations & People Analytics</div>
+            <div class="expertise-item">Business & Decision Support</div>
+
+            <div class="expertise-item">Process Improvement & Workflow Optimization</div>
+            <div class="expertise-item">Cross-functional Collaboration & Stakeholder Management</div>
+
+            <div class="expertise-item">Data Analysis & Insight Generation</div>
+            <div class="expertise-item">Program & Project Execution</div>
+
+            <div class="expertise-item">Workforce & Retention Analysis</div>
+            <div class="expertise-item">Reporting & Data Storytelling</div>
+        </div>
+    </section>
+
+    <section id="tools" style="background: #f9f9f9;">
+        <div class="section-title">
+            <h2>Tools & Software</h2>
+        </div>
+        <div class="tools-grid">
+
+            <div class="tool-category">
+                <h3><i class="fas fa-database"></i> Data & Analytics</h3>
+                <div class="tool-tags">
+                    <span class="tool-tag">Python (Pandas)</span>
+                    <span class="tool-tag">R</span>
+                    <span class="tool-tag">SQL</span>
+
+                    <span class="tool-tag">Advanced Excel</span>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3><i class="fas fa-chart-pie"></i> Visualization & Reporting</h3>
+                <div class="tool-tags">
+                    <span class="tool-tag">Tableau</span>
+                    <span class="tool-tag">Data Visualization</span>
+                    <span class="tool-tag">Geospatial Analysis</span>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3><i class="fas fa-briefcase"></i> Business & Operations Tools</h3>
+                <div class="tool-tags">
+                    <span class="tool-tag">Microsoft 365</span>
+                    <span class="tool-tag">Excel</span>
+                    <span class="tool-tag">PowerPoint</span>
+                    <span class="tool-tag">Word</span>
+                    <span class="tool-tag">Outlook</span>
+                    <span class="tool-tag">OneNote</span>
+                    <span class="tool-tag">Microsoft Copilot</span>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3><i class="fas fa-users"></i> HR & People Systems</h3>
+                <div class="tool-tags">
+                    <span class="tool-tag">BambooHR</span>
+                    <span class="tool-tag">Oracle HRIS</span>
+                    <span class="tool-tag">Lever (ATS)</span>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3><i class="fas fa-tasks"></i> Process & Project Support</h3>
+                <div class="tool-tags">
+                    <span class="tool-tag">Workflow Mapping</span>
+                    <span class="tool-tag">Process Documentation</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Let’s connect!</h2>
+        <p>Feel free to reach out via email or LinkedIn to discuss full-time opportunities in Operations, People
+            Analytics, or data-driven roles</p>
+
+        <div style="margin-bottom: 2rem; font-size: 1.1rem;">
+            <p style="margin-bottom: 10px;">
+                <i class="fas fa-envelope" style="color: var(--primary); margin-right: 8px;"></i>
+                ko.anc@northeastern.edu
+            </p>
+            <p>
+                <i class="fab fa-linkedin" style="color: var(--primary); margin-right: 8px;"></i>
+                <a href="https://www.linkedin.com/in/anchunko/" target="_blank"
+                    style="color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--primary);">
+                    https://www.linkedin.com/in/anchunko/
+                </a>
+            </p>
+        </div>
+
+        <a href="mailto:ko.anc@northeastern.edu" class="contact-btn">Send me an Email</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 An Chun Ko. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>
